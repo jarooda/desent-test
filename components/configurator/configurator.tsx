@@ -141,14 +141,17 @@ export function Configurator({ initialSetup }: { initialSetup: Setup }) {
           aria-label="Choose products"
           className="flex min-w-0 scroll-mt-4 flex-col rounded-3xl border border-line-subtle bg-card lg:h-[calc(100dvh-6rem)] lg:sticky lg:top-4"
         >
-          <div className="px-4 pt-2 lg:px-5">
+          {/* Scroll on a wrapper, not the strip itself: overflow-x on the strip also makes
+              overflow-y scrollable, and the tabs' -1px underline overlap triggers a vertical bar. */}
+          <div className="overflow-x-auto overflow-y-hidden px-4 pt-2 [scrollbar-width:none] lg:px-5 [&::-webkit-scrollbar]:hidden">
             <Tabs
               items={tabItems}
               value={tab}
               onChange={(v) => setTab(v as Category)}
-              className="overflow-x-auto"
+              className="w-max min-w-full"
               // Six categories: tighter than the default line-tab gap so they fit without scrolling.
-              style={{ gap: "var(--space-3)" }}
+              // overflow: the wrapper scrolls; jlds' own mobile overflow-x would re-add the vertical bar.
+              style={{ gap: "var(--space-3)", overflow: "visible" }}
             />
           </div>
           <div className="flex-1 overflow-y-auto p-4 lg:p-5">
