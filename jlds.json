@@ -1,0 +1,13 @@
+{
+  "framework": "react",
+  "typescript": true,
+  "tailwind": {
+    "config": "",
+    "css": "app/globals.css"
+  },
+  "paths": {
+    "components": "components/jl",
+    "utils": "lib/jl"
+  },
+  "registry": "https://cdn.jsdelivr.net/gh/jarooda/jlds@v1.4.2/registry"
+}
